@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/usernameWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:id="@+id/txtDateRdv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_date"
+                android:hint="Date du rdv :"
+                android:textColor="#0f3850"
+                android:textSize="16dp"
+                android:inputType="date"
+                android:maxLines="1"
+                android:backgroundTint="@color/loginBackground"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/passwordWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <EditText
+                android:id="@+id/txtHeureRdv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_time"
+                android:hint="Heure du rdv :"
+                android:textColor="#0f3850"
+                android:inputType="time"
+                android:singleLine="true"
+                android:backgroundTint="@color/loginBackground"/>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+</LinearLayout>

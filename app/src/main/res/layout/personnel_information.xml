@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/header_profile"
+        android:padding="10dp"
+        android:text="Informations personnelles"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Ben Khalifa"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNom"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Nom"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtPrenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Saber"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPrenom"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Prénom"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="false"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtDateNiassance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="06/02/1991"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDateNiassance"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Date naissance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtTel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="+21654666787"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTel"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Tel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState6"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="dev.saberkhalifa@gmail.com"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEmail"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState4"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtSexe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Homme"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSexe"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Sexe"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState5"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_divider" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtHair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Noir"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtHair"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Cheveux"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState7"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_divider" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtColorEye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="Blue"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtColorEye"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Couleur du yeux"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState8"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_divider" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="1.75"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtWeight"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Taille"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState9"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_divider" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="75"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtHeight"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Poids"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState10"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+    <include layout="@layout/item_divider" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/txtBloodType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:text="O+"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#212121"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtBloodType"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="Groupe Sanguin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="#727272"
+            android:textSize="10dp" />
+
+        <ToggleButton
+            android:id="@+id/chkState11"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:background="@drawable/toggle_selector"
+            android:checked="true"
+            android:padding="6dp"
+            android:textOff=""
+            android:textOn="" />
+
+    </RelativeLayout>
+</LinearLayout>

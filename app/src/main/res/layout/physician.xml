@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/header_profile"
+        android:padding="10dp"
+        android:text="Les médecins"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvPhysician"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+</LinearLayout>

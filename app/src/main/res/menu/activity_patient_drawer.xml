@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/profile"
+            android:title="PROFILE" />
+        <item
+            android:id="@+id/nav_maladies"
+            android:icon="@drawable/maladies"
+            android:title="MALADIES" />
+        <item
+            android:id="@+id/nav_rend_vous"
+            android:icon="@drawable/rendez_vous"
+            android:title="REND-VOUS" />
+        <item
+            android:id="@+id/nav_traitement"
+            android:icon="@drawable/consultation"
+            android:title="TRAITEMENT" />
+        <item
+            android:id="@+id/nav_patient"
+            android:icon="@drawable/consultation"
+            android:title="PATIENTS" />
+        <item android:title="Dossier">
+            <menu>
+                <item
+                    android:id="@+id/nav_acte_medicale"
+                    android:icon="@drawable/acte_medicale"
+                    android:title="ACTE-MEDICALE" />
+            </menu>
+        </item>
+
+    </group>
+</menu>

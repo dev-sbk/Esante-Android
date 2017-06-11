@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#006FC8 </color>
+    <color name="colorPrimaryDark">#005daa</color>
+    <color name="colorAccent">#005daa</color>
+    <color name="loginBackground">#006fc8</color>
+    <color name="borderColor">#f7f7f7</color>
+    <color name="itemNavigationBackground">#2F3130 </color>
+    <color name="from">#000000</color>
+    <color name="subject">#111111</color>
+    <color name="timestamp">#4285f4</color>
+    <color name="message">#7a7a7a</color>
+    <color name="row_activated">#e0e0e0</color>
+    <color name="header_profile">#0283ca</color>
+</resources>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lblNom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nom :"
+                    android:textColor="@color/from"
+                    android:padding="2dp"
+                    android:textSize="14dp" />
+                <TextView
+                    android:id="@+id/txtlastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/itemNavigationBackground"
+                    android:padding="2dp"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/lblPrenom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prénom :"
+                    android:padding="2dp"
+                    android:textColor="@color/from"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txtfirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/itemNavigationBackground"
+                    android:padding="2dp"
+                    android:textSize="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lblEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email :"
+                    android:textColor="@color/from"
+                    android:padding="2dp"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:padding="2dp"
+                    android:textColor="@color/itemNavigationBackground"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/lblTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tel :"
+                    android:padding="2dp"
+                    android:textColor="@color/from"
+                    android:textSize="14dp" />
+                <TextView
+                    android:id="@+id/txtTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:padding="2dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/next"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/arrow" />
+</RelativeLayout>

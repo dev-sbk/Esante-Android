@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_list_row"
+    android:paddingLeft="?listPreferredItemPaddingLeft"
+    android:paddingRight="?listPreferredItemPaddingRight"
+    android:paddingTop="@dimen/padding_list_row">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <LinearLayout
+           android:id="@+id/message_container"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:clickable="true"
+           android:orientation="vertical"
+           >
+           <TextView
+               android:id="@+id/lblTraitement"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:ellipsize="end"
+               android:lines="1"
+               android:text="Traitement :"
+               android:textColor="@color/from"
+               android:textSize="@dimen/msg_text_secondary"
+               />
+           <TextView
+               android:id="@+id/txtTraitement"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:ellipsize="end"
+               android:lines="1"
+               android:textColor="@color/colorPrimaryDark"
+               android:textSize="@dimen/msg_text_secondary"
+               />
+           <TextView
+               android:id="@+id/lblNbrJour"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:ellipsize="end"
+               android:lines="1"
+               android:text="Nombre du jour :"
+               android:textColor="@color/message"
+               android:textSize="@dimen/msg_text_secondary"
+               />
+           <TextView
+               android:id="@+id/txtNbJour"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:ellipsize="end"
+               android:lines="1"
+               android:textColor="@color/colorPrimaryDark"
+               android:textSize="@dimen/msg_text_secondary" />
+           <TextView
+               android:id="@+id/active"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentRight="true"
+               android:textColor="#F50057"
+               android:layout_marginRight="5dp"
+               android:textSize="@dimen/timestamp"
+               android:textStyle="bold" />
+       </LinearLayout>
+
+   </LinearLayout>
+
+</RelativeLayout>
