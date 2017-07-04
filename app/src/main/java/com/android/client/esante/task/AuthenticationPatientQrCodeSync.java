@@ -12,6 +12,7 @@ import com.android.client.esante.api.ApiService;
 import com.android.client.esante.api.RetroClient;
 import com.android.client.esante.converter.PatientConverter;
 import com.android.client.esante.domain.Patient;
+import com.android.client.esante.repository.EsanteRepository;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,8 +21,10 @@ import retrofit2.Response;
 public class AuthenticationPatientQrCodeSync extends AsyncTask<String, Void, Void> {
     private ProgressDialog progressDialog;
     private Context context;
+    private EsanteRepository repository;
     public AuthenticationPatientQrCodeSync(Context context) {
         this.context = context;
+        this.repository=new EsanteRepository(this.context);
     }
     @Override
     protected void onPreExecute() {
@@ -45,31 +48,19 @@ public class AuthenticationPatientQrCodeSync extends AsyncTask<String, Void, Voi
                 if (response.isSuccessful()) {
                     if(response.body().getPatients()!=null){
                         Patient pat = response.body().getPatients().get(0);
+                        repository.addUser(pat);
                         Intent i = new Intent(context, PatientActivity.class);
                         i.putExtra("idPat", pat.getIdPatient());
-                        i.putExtra("code",pat.getQrCode());
                         if (pat.getLastName() != null)
                             i.putExtra("nom", pat.getLastName());
                         else i.putExtra("nom", "");
                         if (pat.getFirstName() != null)
                             i.putExtra("prenom", pat.getFirstName());
                         else i.putExtra("prenom", "");
-                        if (pat.getBirthDay() != null)
-                            i.putExtra("dateNaissance", pat.getBirthDay());
-                        else i.putExtra("dateNaissance", "");
-                        if (pat.getTel() != null)
-                            i.putExtra("tel", pat.getTel());
-                        else i.putExtra("tel", "");
+
                         if (pat.getEmail() != null)
                             i.putExtra("email", pat.getEmail());
                         else i.putExtra("email", "");
-                        if(pat.getGender()!=null){
-                            if (pat.getGender().equals("2"))
-                                i.putExtra("sexe", "Homme");
-                            else
-                                i.putExtra("sexe", "Femme");
-                        }else
-                            i.putExtra("sexe", "");
                         ((Activity) context).finish();
                         ((Activity) context).startActivity(i);
                     }else

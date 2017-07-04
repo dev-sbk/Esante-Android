@@ -39,7 +39,7 @@ public class RdvAdapter extends RecyclerView.Adapter<RdvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Calendar cal=getStringToDate(rdvs.get(position).getHeureRDV());
-        String date=cal.get(Calendar.DAY_OF_MONTH)+"/"+cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.YEAR);
+        String date=String.format("%02d", cal.get(Calendar.DAY_OF_MONTH))+"/"+String.format("%02d", cal.get(Calendar.MONTH))+"/"+cal.get(Calendar.YEAR);
         String heure=cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE);
         String etat=rdvs.get(position).getValide() ==1 ? "ACCEPTER" : "EN ATTENTE";
         TextView txtDateRdv = viewHolder.dateRdv;

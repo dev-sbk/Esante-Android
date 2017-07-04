@@ -17,17 +17,24 @@ import com.android.client.esante.R;
 import com.android.client.esante.layout.common.RdvFragment;
 import com.android.client.esante.layout.docteur.DocteurProfileFragment;
 import com.android.client.esante.layout.docteur.PatientFragment;
+import com.android.client.esante.repository.EsanteRepository;
+import com.android.client.esante.util.AppUtil;
+import com.google.firebase.iid.FirebaseInstanceId;
+
 
 public class DocteurActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView txtEmail;
     TextView txtName;
-    String id,nom,prenom,email;
+    public static  int id=0;
+    String       nom,prenom,email;
     private Toolbar toolbar;
     private  DrawerLayout drawer;
+    private EsanteRepository repository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.repository = new EsanteRepository(this);
         setContentView(R.layout.docteur_actitvity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,12 +51,14 @@ public class DocteurActivity extends AppCompatActivity
         txtName = (TextView) header_layout.findViewById(R.id.txtName);
         txtEmail = (TextView) header_layout.findViewById(R.id.txtEmail);
         Intent intent = getIntent();
-        id=intent.getExtras().get("id").toString();
+        id=Integer.parseInt(intent.getExtras().get("id").toString());
         nom=intent.getExtras().get("nom").toString();
         prenom=intent.getExtras().get("prenom").toString();
         email=intent.getExtras().get("email").toString();
         txtName.setText(nom+" "+prenom);
         txtEmail.setText(email);
+        String token=FirebaseInstanceId.getInstance().getToken();
+        AppUtil.registerToken(token);
         loadFragment(R.id.nav_profile);
     }
     @Override
@@ -70,11 +79,14 @@ public class DocteurActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
             case R.id.action_settings:
                 return true;
             case R.id.action_logout:
+                repository.dropTable();
+                Intent i = new Intent(this, LoginPatientActivity.class);
+                this.finish();
+                this.startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -95,35 +107,44 @@ public class DocteurActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void loadFragment(int index){
-        Bundle bundle = new Bundle();
-        Fragment fragment=null;
-        switch(index){
-            case R.id.nav_profile:
-                fragment=new DocteurProfileFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Profile ");
-                break;
-            case R.id.nav_rend_vous:
-                fragment=new RdvFragment();
-                bundle.putString("id",id);
-                bundle.putString("key","DOCTEUR");
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Rendez-Vous");
-                break;
-            case R.id.nav_patient:
-                fragment=new PatientFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Patients");
-                break;
-        }
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                android.R.anim.fade_out);
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commitAllowingStateLoss();
+    private void loadFragment(final int index){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                synchronized (this) {
+                    Bundle bundle = new Bundle();
+                    Fragment fragment=null;
+                    switch(index){
+                        case R.id.nav_profile:
+                            fragment=new DocteurProfileFragment();
+                            bundle.putString("id",String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Profile ");
+                            break;
+                        case R.id.nav_rend_vous:
+                            fragment=new RdvFragment();
+                            bundle.putString("id",String.valueOf(id));
+                            bundle.putString("key","0");
+                            bundle.putString("role","DOCTEUR");
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Rendez-Vous");
+                            break;
+                        case R.id.nav_patient:
+                            fragment=new PatientFragment();
+                            bundle.putString("id",String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Patients");
+                            break;
+                    }
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                            android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.frame,fragment);
+                    fragmentTransaction.commitAllowingStateLoss();
+                }
+            }
+        };
+        runnable.run();
     }
 
 }

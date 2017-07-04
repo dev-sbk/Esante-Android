@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "275513714799",
+    "firebase_url": "https://esante-88600.firebaseio.com",
+    "project_id": "esante-88600",
+    "storage_bucket": "esante-88600.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275513714799:android:1aaae317dcf25a59",
+        "android_client_info": {
+          "package_name": "com.android.client.esante"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275513714799-a4hna4n2m96gb46gd2999erjqj76318j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.client.esante",
+            "certificate_hash": "122c47148760aa08a344229803d14cf4b41bd83b"
+          }
+        },
+        {
+          "client_id": "275513714799-3hl8mvpav7v6p6c387p8i8tv3lsqgnmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkARJkm3JGOROrjo6qB49iPI1dQMsdJ-k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275513714799-3hl8mvpav7v6p6c387p8i8tv3lsqgnmr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

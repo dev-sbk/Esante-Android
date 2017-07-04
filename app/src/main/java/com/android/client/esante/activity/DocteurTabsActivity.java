@@ -9,18 +9,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
-
 import com.android.client.esante.R;
 import com.android.client.esante.layout.common.RdvFragment;
-import com.android.client.esante.layout.patient.MaladieFragment;
-import com.android.client.esante.layout.patient.PatientProfileFragment;
-import com.android.client.esante.layout.patient.TraitementFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientTabsActivity extends AppCompatActivity {
+public class DocteurTabsActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -49,22 +43,17 @@ public class PatientTabsActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("id",idPat);
         bundle.putString("idDoc",idDoc);
-        bundle.putString("active","1");
+        bundle.putString("active","0");
         bundle.putString("key","1");
         bundle.putString("role",role);
-
-        Fragment fragmentProfile=new PatientProfileFragment();
         Fragment fragmentRDV=new RdvFragment();
-        Fragment fragmentMaladies=new MaladieFragment();
 
-        fragmentProfile.setArguments(bundle);
         fragmentRDV.setArguments(bundle);
-        fragmentMaladies.setArguments(bundle);
 
-
-        adapter.addFragment(fragmentProfile, "PROFILE");
         adapter.addFragment(fragmentRDV, "RDV");
-        adapter.addFragment(fragmentMaladies, "DOOSIER");
+
+
+
 
         viewPager.setAdapter(adapter);
     }

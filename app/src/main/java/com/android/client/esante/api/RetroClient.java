@@ -1,19 +1,15 @@
 package com.android.client.esante.api;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 public class RetroClient
 {
     /********
      * URLS
      *******/
-     public static final String ROOT_URL = "http://192.168.1.3";
-    //public static final String ROOT_URL = "http://192.168.190.160";
+      public static final String ROOT_URL = "http://192.168.190.160";
 
     /**
      * Get Retrofit Instance

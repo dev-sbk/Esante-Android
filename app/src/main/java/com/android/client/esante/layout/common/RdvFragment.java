@@ -44,8 +44,8 @@ public class RdvFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     private FloatingActionButton floatingActionButton;
     EditText dateRdv;
     EditText heureRdv;
-    String id,key;
-    String url;
+    String id,idDoc,key,role;
+    int active;
     public RdvFragment() {
 
     }
@@ -74,9 +74,14 @@ public class RdvFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         rvMaladies.setAdapter(adapter);
         rvMaladies.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(R.drawable.shape_divider)));
         rvMaladies.setLayoutManager(new LinearLayoutManager(getContext().getApplicationContext()));
-        id = getArguments().getString("id");
+        id= getArguments().getString("id");
+        role=getArguments().getString("role");
         key=getArguments().getString("key");
-        if(key.equals("DOCTEUR")) floatingActionButton.setVisibility(View.INVISIBLE);
+        if(key.equals("0")) floatingActionButton.setVisibility(View.INVISIBLE);
+        else{
+            idDoc = getArguments().getString("idDoc");
+            active=Integer.parseInt(getArguments().getString("active"));
+        }
 
         return view;
     }
@@ -91,7 +96,7 @@ public class RdvFragment extends Fragment implements SwipeRefreshLayout.OnRefres
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(true);
         ApiService api = RetroClient.getApiService();
-        Call<RdvConverter> call = api.rdvs(id,key);
+        Call<RdvConverter> call = api.rdvs(id,role);
         call.enqueue(new Callback<RdvConverter>() {
             @Override
             public void onResponse(Call<RdvConverter> call, Response<RdvConverter> response) {
@@ -166,13 +171,12 @@ public class RdvFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         alert.setPositiveButton("Ajouter", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 ApiService api = RetroClient.getApiService();
-                Call<RdvConverter> call = api.addRdv(dateRdv.getText().toString(),heureRdv.getText().toString(),0,0,Integer.parseInt(id));
+                Call<RdvConverter> call = api.addRdv(dateRdv.getText().toString(),heureRdv.getText().toString(),active,Integer.parseInt(idDoc),Integer.parseInt(id));
                 call.enqueue(new Callback<RdvConverter>() {
                     @Override
                     public void onResponse(Call<RdvConverter> call, Response<RdvConverter> response) {
                         if (response.isSuccessful()) {
                            new RdvDataSync().execute(id);
-
                         }
                     }
                     @Override
@@ -205,7 +209,7 @@ public class RdvFragment extends Fragment implements SwipeRefreshLayout.OnRefres
         @Override
         protected Void doInBackground(String... params) {
             ApiService api = RetroClient.getApiService();
-            Call<RdvConverter> call = api.rdvs(id,key);
+            Call<RdvConverter> call = api.rdvs(id,role);
             call.enqueue(new Callback<RdvConverter>() {
                 @Override
                 public void onResponse(Call<RdvConverter> call, Response<RdvConverter> response) {

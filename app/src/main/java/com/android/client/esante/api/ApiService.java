@@ -1,10 +1,8 @@
 package com.android.client.esante.api;
-
 import com.android.client.esante.converter.ActeMedicaleConverter;
 import com.android.client.esante.converter.ContactConverter;
 import com.android.client.esante.converter.DocteurConverter;
 import com.android.client.esante.converter.MaladieConverter;
-import com.android.client.esante.converter.NotificationConverter;
 import com.android.client.esante.converter.PatientConverter;
 import com.android.client.esante.converter.RdvConverter;
 import com.android.client.esante.converter.StringConverter;
@@ -32,7 +30,7 @@ public interface ApiService {
     Call<MaladieConverter> getMaladiesByPatient(@Url String url);
     @FormUrlEncoded
     @POST("/esante/mspatient/rendezvous/")
-    Call<RdvConverter> rdvs(@Field("id") String id,@Field("key") String key);
+    Call<RdvConverter> rdvs(@Field("id") String id,@Field("role") String key);
     @GET
     Call<TraitementConverter> getTraitementByPatient(@Url String url);
     @GET
@@ -44,10 +42,11 @@ public interface ApiService {
                                 @Field("id_medecin") int id_medecin,
                                 @Field("id_patient") int id_patient);
     @GET
-    Call<NotificationConverter> notification(@Url String url);
-    @GET
     Call<DocteurConverter> profile(@Url String url);
     @FormUrlEncoded
     @POST("/esante/mspatient/updateprofiledocteur/")
     Call<StringConverter> updateprofile(@Field("id") String id,@Field("nom") String nom, @Field("prenom") String prenom, @Field("tel") String tel, @Field("email") String email );
+    @FormUrlEncoded
+    @POST("/esante/mspatient/registertoken/")
+    Call<StringConverter> registerToken(@Field("token") String token,@Field("idPatient")int idPatient,@Field("idMedecin")int idMedecin);
 }

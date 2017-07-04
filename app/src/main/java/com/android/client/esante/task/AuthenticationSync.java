@@ -11,14 +11,19 @@ import com.android.client.esante.api.ApiService;
 import com.android.client.esante.api.RetroClient;
 import com.android.client.esante.converter.DocteurConverter;
 import com.android.client.esante.domain.Docteur;
+import com.android.client.esante.repository.EsanteRepository;
+import com.android.client.esante.service.MyFirebaseInstanceIDService;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 public class AuthenticationSync extends AsyncTask<String, String, Void> {
     private ProgressDialog progressDialog;
     private Context context;
+    private EsanteRepository repository;
     public AuthenticationSync(Context context) {
         this.context = context;
+        this.repository=new EsanteRepository(this.context);
     }
     @Override
     protected void onPreExecute() {
@@ -43,6 +48,7 @@ public class AuthenticationSync extends AsyncTask<String, String, Void> {
                     Log.v("Response",""+response.code());
                     if(response.body().getDocteurs()!=null){
                         Docteur doc = response.body().getDocteurs().get(0);
+                        repository.addUser(doc);
                         Intent i = new Intent(context, DocteurActivity.class);
                         i.putExtra("id", doc.getIdDocteur());
                         if (doc.getLastName() != null)
@@ -58,7 +64,7 @@ public class AuthenticationSync extends AsyncTask<String, String, Void> {
                         ((Activity) context).startActivity(i);
 
                     }else
-                        Toast.makeText(context.getApplicationContext(),"ERREUR : QR CODE INVALIDATE",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context.getApplicationContext(),"ERREUR : Email ou mot de passe incorrecte",Toast.LENGTH_SHORT).show();
                 }
             }
             @Override

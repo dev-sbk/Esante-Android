@@ -66,7 +66,9 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
                 }else{
                     Intent intent = new Intent(mContext, PatientTabsActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("id",patients.get(position).getIdPatient());
+                    intent.putExtra("idPat",patients.get(position).getIdPatient());
+                    intent.putExtra("idDoc",patients.get(position).getIdMedecin());
+                    intent.putExtra("role","PATIENT");
                     mContext.startActivity(intent);
                 }
             }

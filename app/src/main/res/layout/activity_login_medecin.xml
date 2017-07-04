@@ -8,8 +8,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/shape"
@@ -28,13 +28,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="SIGN IN"
+                android:text="Connexion"
                 android:textSize="30sp"
                 android:textColor="#0f3850"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingTop="80dp"
             android:weightSum="1">
@@ -48,7 +48,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/user"
-                    android:hint="User Name"
+                    android:hint="Adresse e-mail"
                     android:textColor="#0f3850"
                     android:textSize="16dp"
                     android:inputType="textEmailAddress"
@@ -59,13 +59,13 @@
                 android:id="@+id/passwordWrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               >
+                >
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/lock"
-                    android:hint="Password"
+                    android:hint="Mot de passe"
                     android:textColor="#0f3850"
                     android:inputType="textPassword"
                     android:singleLine="true"
@@ -78,7 +78,7 @@
                 android:paddingTop="5dp"
                 android:textSize="14dp"
                 android:textColor="#0f3850"
-                android:text="Mot de passe oublié?" />
+                android:text="Mot de passe oublié ?" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,34 +86,23 @@
 
                 <Button
                     android:id="@+id/btnLogin"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/shape_btn"
+                    android:background="@drawable/shape_btn_qr_code"
                     android:text="Connexion"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginBottom="10dp"
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="18sp" />
                 <Button
-                    android:id="@+id/btnSacnner"
-                    android:layout_width="220dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/shape_btn_qr_code"
-                    android:text="Scan Qr Code"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="10dp"
-                    />
-                <Button
                     android:id="@+id/btnSignUp"
-                    android:layout_width="220dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/shape_btn_sign_up"
+                    android:layout_marginBottom="10dp"
                     android:text="Inscription"
                     android:textAllCaps="false"
                     android:textColor="#fff"

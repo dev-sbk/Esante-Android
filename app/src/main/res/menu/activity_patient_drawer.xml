@@ -30,6 +30,13 @@
                     android:title="ACTE-MEDICALE" />
             </menu>
         </item>
-
+        <item android:title="Medecins">
+            <menu>
+                <item
+                    android:id="@+id/nav_medecins"
+                    android:icon="@drawable/physician"
+                    android:title="MEDECINS" />
+            </menu>
+        </item>
     </group>
 </menu>

@@ -5,6 +5,9 @@ public class Patient{
     @SerializedName("id_patient")
     @Expose
     private int idPatient;
+    @SerializedName("id_medecin")
+    @Expose
+    private int idMedecin;
     @SerializedName("nom")
     @Expose
     private String lastName;
@@ -74,6 +77,14 @@ public class Patient{
 
     public void setIdPatient(int idPatient) {
         this.idPatient = idPatient;
+    }
+
+    public int getIdMedecin() {
+        return idMedecin;
+    }
+
+    public void setIdMedecin(int idMedecin) {
+        this.idMedecin = idMedecin;
     }
 
     public String getLastName() {
@@ -192,6 +203,7 @@ public class Patient{
     public String toString() {
         return "Patient{" +
                 "idPatient=" + idPatient +
+                ", idMedecin=" + idMedecin +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", birthDay='" + birthDay + '\'' +

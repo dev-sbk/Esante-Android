@@ -1,4 +1,5 @@
 package com.android.client.esante.activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,22 +18,29 @@ import android.widget.TextView;
 import com.android.client.esante.R;
 import com.android.client.esante.layout.common.RdvFragment;
 import com.android.client.esante.layout.patient.ActeMedicaleFragment;
+import com.android.client.esante.layout.patient.DocteurFragment;
 import com.android.client.esante.layout.patient.MaladieFragment;
 import com.android.client.esante.layout.patient.PatientProfileFragment;
 import com.android.client.esante.layout.patient.TraitementFragment;
-import com.android.client.esante.task.NotificationTask;
+import com.android.client.esante.repository.EsanteRepository;
+import com.android.client.esante.util.AppUtil;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class PatientActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView txtEmail;
     TextView txtName;
-    String id,nom,prenom,email,code;
+    public static int id = 0;
+    String nom, prenom, email, code;
     private Toolbar toolbar;
-    private  DrawerLayout drawer;
+    private DrawerLayout drawer;
+    private EsanteRepository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_actitvity);
+        this.repository = new EsanteRepository(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -45,19 +53,19 @@ public class PatientActivity extends AppCompatActivity
         navigationView.getMenu().findItem(R.id.nav_patient).setVisible(false);
         navigationView.invalidate();
         navigationView.setNavigationItemSelectedListener(this);
-        View header_layout=navigationView.getHeaderView(0);
+        View header_layout = navigationView.getHeaderView(0);
         txtName = (TextView) header_layout.findViewById(R.id.txtName);
         txtEmail = (TextView) header_layout.findViewById(R.id.txtEmail);
         Intent intent = getIntent();
-        id=intent.getExtras().get("idPat").toString();
-        code=intent.getExtras().get("code").toString();
-        nom=intent.getExtras().get("nom").toString();
-        prenom=intent.getExtras().get("prenom").toString();
-        email=intent.getExtras().get("email").toString();
-        txtName.setText(nom+" "+prenom);
+        id = Integer.parseInt(intent.getExtras().get("idPat").toString());
+        nom = intent.getExtras().get("nom").toString();
+        prenom = intent.getExtras().get("prenom").toString();
+        email = intent.getExtras().get("email").toString();
+        txtName.setText(nom + " " + prenom);
         txtEmail.setText(email);
+        String token = FirebaseInstanceId.getInstance().getToken();
+        AppUtil.registerToken(token);
         loadFragment(R.id.nav_profile);
-        new NotificationTask(this).execute(id);
     }
 
     @Override
@@ -85,16 +93,21 @@ public class PatientActivity extends AppCompatActivity
             case R.id.action_settings:
                 return true;
             case R.id.action_logout:
+                repository.dropTable();
+                Intent i = new Intent(this, LoginPatientActivity.class);
+                this.finish();
+                this.startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_profile) {
-          loadFragment(id);
+            loadFragment(id);
         } else if (id == R.id.nav_maladies) {
             loadFragment(id);
         } else if (id == R.id.nav_rend_vous) {
@@ -103,51 +116,72 @@ public class PatientActivity extends AppCompatActivity
             loadFragment(id);
         } else if (id == R.id.nav_acte_medicale) {
             loadFragment(id);
+        } else if (id == R.id.nav_medecins) {
+            loadFragment(id);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void loadFragment(int index){
-        Bundle bundle = new Bundle();
-        Fragment fragment=null;
-        switch(index){
-            case R.id.nav_profile:
-                fragment=new PatientProfileFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Profile ");
-                break;
-            case R.id.nav_maladies:
-                fragment=new MaladieFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Maladies");
-                break;
-            case R.id.nav_rend_vous:
-                fragment=new RdvFragment();
-                bundle.putString("id",id);
-                bundle.putString("key","PATIENT");
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Rendez-Vous");
-                break;
-            case R.id.nav_traitement:
-                fragment=new TraitementFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Traitement");
-                break;
-            case R.id.nav_acte_medicale:
-                fragment=new ActeMedicaleFragment();
-                bundle.putString("id",id);
-                fragment.setArguments(bundle);
-                getSupportActionBar().setTitle("Acte-Medicales");
-                break;
-        }
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                android.R.anim.fade_out);
-        fragmentTransaction.replace(R.id.frame,fragment);
-        fragmentTransaction.commitAllowingStateLoss();
+
+    private void loadFragment(final int index) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                synchronized (this) {
+                    Bundle bundle = new Bundle();
+                    Fragment fragment = null;
+                    switch (index) {
+                        case R.id.nav_profile:
+                            fragment = new PatientProfileFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Profile ");
+                            break;
+                        case R.id.nav_maladies:
+                            fragment = new MaladieFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Maladies");
+                            break;
+                        case R.id.nav_rend_vous:
+                            fragment = new RdvFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            bundle.putString("idDoc", "3");
+                            bundle.putString("active", "0");
+                            bundle.putString("key", "0");
+                            bundle.putString("role", "PATIENT");
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Rendez-Vous");
+                            break;
+                        case R.id.nav_traitement:
+                            fragment = new TraitementFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Traitement");
+                            break;
+                        case R.id.nav_acte_medicale:
+                            fragment = new ActeMedicaleFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Acte-Medicales");
+                            break;
+                        case R.id.nav_medecins:
+                            fragment = new DocteurFragment();
+                            bundle.putString("id", String.valueOf(id));
+                            fragment.setArguments(bundle);
+                            getSupportActionBar().setTitle("Medecins");
+                            break;
+                    }
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                            android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.frame, fragment);
+                    fragmentTransaction.commitAllowingStateLoss();
+                }
+            }
+        };
+        runnable.run();
+
     }
 }

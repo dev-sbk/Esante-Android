@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.android.client.esante.R;
 import com.android.client.esante.adapter.ContactAdapter;
 import com.android.client.esante.adapter.DividerItemDecoration;
-import com.android.client.esante.adapter.DocteurAdapter;
+import com.android.client.esante.adapter.ProfileDocteurAdapter;
 import com.android.client.esante.api.ApiService;
 import com.android.client.esante.api.RetroClient;
 import com.android.client.esante.converter.ContactConverter;
@@ -44,7 +44,7 @@ public class PatientProfileFragment extends Fragment {
     TextView txtBooldType;
     RecyclerView rvContacts,rvDocteurs;
     ContactAdapter adapter;
-    DocteurAdapter docteurAdapter;
+    ProfileDocteurAdapter docteurAdapter;
     public PatientProfileFragment() {
     }
     @Override
@@ -67,7 +67,7 @@ public class PatientProfileFragment extends Fragment {
         rvContacts.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         rvDocteurs = (RecyclerView) view.findViewById(R.id.rvPhysician);
-        docteurAdapter = new DocteurAdapter(docteurs,view.getContext());
+        docteurAdapter = new ProfileDocteurAdapter(docteurs,view.getContext());
         rvDocteurs.setAdapter(docteurAdapter);
         rvDocteurs.addItemDecoration(new DividerItemDecoration(getResources().getDrawable(R.drawable.shape_divider)));
         rvDocteurs.setLayoutManager(new LinearLayoutManager(view.getContext()));

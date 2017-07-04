@@ -58,14 +58,13 @@ public class DocteurProfileFragment extends Fragment {
         txtTel=(TextView) view.findViewById(R.id.txtTel);
         txtEmail=(TextView) view.findViewById(R.id.txtEmail);
         id=getArguments().getString("id");
-
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        new ProfileSync().execute(getArguments().getString("id"));
+       new ProfileSync().execute(getArguments().getString("id"));
     }
 
     private void loadPopup() {
